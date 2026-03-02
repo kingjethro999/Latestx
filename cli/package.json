@@ -1,0 +1,35 @@
+{
+  "name": "latestx",
+  "version": "1.0.0",
+  "description": "Universal dependency intelligence and upgrade CLI",
+  "main": "src/index.js",
+  "type": "module",
+  "bin": {
+    "latestx": "./bin/latestx.js"
+  },
+  "scripts": {
+    "start": "node bin/latestx.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "dependencies",
+    "updater",
+    "package",
+    "manager"
+  ],
+  "author": "King Jethro",
+  "license": "MIT",
+  "dependencies": {
+    "@google/genai": "^1.43.0",
+    "commander": "^14.0.3",
+    "dotenv": "^17.3.1",
+    "execa": "^9.6.1",
+    "is-odd": "^3.0.1",
+    "ora": "^9.3.0",
+    "picocolors": "^1.1.1",
+    "prompts": "^2.4.2",
+    "toml": "^3.0.0",
+    "yaml": "^2.8.2"
+  }
+}
