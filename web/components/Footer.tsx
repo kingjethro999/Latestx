@@ -1,12 +1,9 @@
 export default function Footer() {
   return (
     <footer className="border-t border-secondary bg-secondary/30">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center font-bold text-background text-sm">
-              L
-            </div>
             <span className="font-semibold">Latestx</span>
           </div>
           <p className="text-foreground/60 text-sm text-center sm:text-right">
