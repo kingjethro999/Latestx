@@ -8,12 +8,9 @@ export default function Header() {
 
   return (
     <header className="border-b border-secondary bg-background/80 backdrop-blur-md sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+      <nav className="mx-auto w-full px-4 lg:px-6 xl:max-w-7xl relative py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center font-bold text-background">
-            L
-          </div>
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent dark:text-white dark:!bg-none">
             Latestx
           </h1>
         </div>
@@ -24,7 +21,7 @@ export default function Header() {
           <Star size={18} />
           Star on GitHub
         </button>
-      </div>
+      </nav>
     </header>
   );
 }

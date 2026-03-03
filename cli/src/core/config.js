@@ -1,4 +1,4 @@
-import { writeFileSync, existsSync } from 'fs';
+import { writeFileSync, existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 import yaml from 'yaml';
 
@@ -39,4 +39,7 @@ export function loadConfig(cwd) {
     return yaml.parse(content);
 }
 
-import { readFileSync } from 'fs';
+export function writeConfig(cwd, config) {
+    const configPath = join(cwd, 'latestx.yaml');
+    writeFileSync(configPath, yaml.stringify(config));
+}

@@ -104,3 +104,50 @@ export async function executeInstall(packageManager, packageName) {
         throw error;
     }
 }
+
+export async function executeClean(packageManager) {
+    const spinner = ora(`Cleaning cache via ${packageManager}...`).start();
+
+    try {
+        let command = '';
+        let args = [];
+
+        switch (packageManager) {
+            case 'npm':
+                command = 'npm';
+                args = ['cache', 'clean', '--force'];
+                break;
+            case 'yarn':
+                command = 'yarn';
+                args = ['cache', 'clean'];
+                break;
+            case 'pnpm':
+                command = 'pnpm';
+                args = ['store', 'prune'];
+                break;
+            case 'bun':
+                command = 'bun';
+                args = ['pm', 'cache', 'rm'];
+                break;
+            case 'pip':
+                command = 'pip';
+                args = ['cache', 'purge'];
+                break;
+            case 'composer':
+                command = 'composer';
+                args = ['clear-cache'];
+                break;
+            default:
+                throw new Error(`Package manager ${packageManager} is not currently supported for automated cache cleaning.`);
+        }
+
+        // Execute the native command
+        await execa(command, args, { stdio: 'ignore' });
+        spinner.succeed('Successfully cleaned cache.');
+        return true;
+
+    } catch (error) {
+        spinner.fail(`Failed to clean cache using ${packageManager}`);
+        throw error;
+    }
+}

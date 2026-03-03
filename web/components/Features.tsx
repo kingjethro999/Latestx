@@ -25,26 +25,33 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="py-20 sm:py-32 bg-secondary/30">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Features</h2>
-          <p className="text-foreground/60 text-lg">Everything you need in a package manager</p>
+    <section id="features" className="relative py-16 sm:py-24">
+      <div className="absolute inset-0 bg-[#0A0A0A]"></div>
+      <div className="relative z-10 mx-auto max-w-7xl px-4 lg:px-6 space-y-12">
+        <div className="space-y-8">
+          <div className="flex items-center justify-center lg:justify-start gap-2 text-xs font-mono tracking-widest uppercase text-[#646464]">
+            [<span>Key Features</span>]
+          </div>
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+            <h2 className="max-w-xl text-3xl md:text-4xl lg:text-5xl tracking-tight text-center lg:text-left text-white">
+              Why Choose Latestx?
+            </h2>
+            <p className="max-w-md text-gray-400 text-center lg:text-left">
+              Our universal dependency intelligence CLI offers unprecedented flexibility, speed, and safety for modern developers.
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid gap-4 lg:gap-6 lg:grid-cols-2 xl:grid-cols-4">
           {features.map((feature, idx) => {
             const Icon = feature.icon;
             return (
-              <div
-                key={idx}
-                className="p-6 rounded-xl border border-primary/20 bg-background/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/10"
-              >
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6 text-background" />
+              <div key={idx} className="lg:border-l border-[#151619] pt-8 text-center lg:text-left lg:p-8">
+                <div className="mb-6 flex justify-center lg:justify-start">
+                  <Icon className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                <p className="text-foreground/60">{feature.description}</p>
+                <h3 className="text-xl font-medium text-white">{feature.title}</h3>
+                <p className="mt-3 text-gray-400">{feature.description}</p>
               </div>
             );
           })}
