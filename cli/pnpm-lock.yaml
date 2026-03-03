@@ -20,9 +20,6 @@ importers:
       execa:
         specifier: ^9.6.1
         version: 9.6.1
-      is-odd:
-        specifier: ^3.0.1
-        version: 3.0.1
       ora:
         specifier: ^9.3.0
         version: 9.3.0
@@ -259,14 +256,6 @@ packages:
   is-interactive@2.0.0:
     resolution: {integrity: sha512-qP1vozQRI+BMOPcjFzrjXuQvdak2pHNUMZoeG2eRbiSqyvbEf/wQtEOTOX1guk6E3t36RkaqiSt8A/6YElNxLQ==}
     engines: {node: '>=12'}
-
-  is-number@6.0.0:
-    resolution: {integrity: sha512-Wu1VHeILBK8KAWJUAiSZQX94GmOE45Rg6/538fKwiloUu21KncEkYGPqob2oSZ5mUT73vLGrHQjKw3KMPwfDzg==}
-    engines: {node: '>=0.10.0'}
-
-  is-odd@3.0.1:
-    resolution: {integrity: sha512-CQpnWPrDwmP1+SMHXZhtLtJv90yiyVfluGsX5iNCVkrhQtU3TQHsUWPG9wkdk9Lgd5yNpAg9jQEo90CBaXgWMA==}
-    engines: {node: '>=4'}
 
   is-plain-obj@4.1.0:
     resolution: {integrity: sha512-+Pgi+vMuUNkJyExiMBt5IlFoMyKnr5zhJ4Uspz58WOhBF5QoIZkFyNHIbBAtHwzVAgk5RtndVNsDRN61/mmDqg==}
@@ -704,12 +693,6 @@ snapshots:
   is-fullwidth-code-point@3.0.0: {}
 
   is-interactive@2.0.0: {}
-
-  is-number@6.0.0: {}
-
-  is-odd@3.0.1:
-    dependencies:
-      is-number: 6.0.0
 
   is-plain-obj@4.1.0: {}
 

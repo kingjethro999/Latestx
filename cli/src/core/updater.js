@@ -151,3 +151,53 @@ export async function executeClean(packageManager) {
         throw error;
     }
 }
+
+export async function executeUninstall(packageManager, packageName) {
+    const spinner = ora(`Uninstalling ${packageName} via ${packageManager}...`).start();
+
+    try {
+        let command = '';
+        let args = [];
+
+        switch (packageManager) {
+            case 'npm':
+                command = 'npm';
+                args = ['uninstall', packageName];
+                break;
+            case 'yarn':
+                command = 'yarn';
+                args = ['remove', packageName];
+                break;
+            case 'pnpm':
+                command = 'pnpm';
+                args = ['remove', packageName];
+                break;
+            case 'bun':
+                command = 'bun';
+                args = ['remove', packageName];
+                break;
+            case 'pip':
+                command = 'pip';
+                args = ['uninstall', '-y', packageName];
+                break;
+            case 'cargo':
+                command = 'cargo';
+                args = ['remove', packageName];
+                break;
+            case 'composer':
+                command = 'composer';
+                args = ['remove', packageName];
+                break;
+            default:
+                throw new Error(`Package manager ${packageManager} is not currently supported for automated uninstalls.`);
+        }
+
+        await execa(command, args, { stdio: 'ignore' });
+        spinner.succeed(`Successfully uninstalled ${packageName}.`);
+        return true;
+
+    } catch (error) {
+        spinner.fail(`Failed to uninstall ${packageName} using ${packageManager}`);
+        throw error;
+    }
+}

@@ -14,19 +14,28 @@ const commands = [
   {
     category: 'Package Management',
     items: [
-      { cmd: 'latestx install <package>', desc: 'Install a new package to your project', tags: [] },
+      { cmd: 'latestx install <package>', desc: 'Install a new package to your project', tags: ['-c, --compatible'] },
+      { cmd: 'latestx uninstall <package>', desc: 'Remove a package via native package manager', tags: [] },
       { cmd: 'latestx check', desc: 'Check for outdated dependencies', tags: ['--compatibility', '--non-interactive'] },
       { cmd: 'latestx update', desc: 'Update packages safely using intelligence', tags: ['--compatibility'] },
       { cmd: 'latestx list', desc: 'List all installed packages natively', tags: [] },
     ],
   },
   {
-    category: 'Advanced & Config',
+    category: 'Analysis & Reports',
     items: [
+      { cmd: 'latestx outdated', desc: 'Generate a dependency report for CI/CD', tags: ['--format json', '--format markdown'] },
+      { cmd: 'latestx doctor', desc: 'Diagnose your latestx setup and environment', tags: [] },
       { cmd: 'latestx ai', desc: 'AI-assisted dependency analysis', tags: ['--auth'] },
-      { cmd: 'latestx clean', desc: 'Clean the package manager cache', tags: [] },
+    ],
+  },
+  {
+    category: 'Config & Maintenance',
+    items: [
       { cmd: 'latestx config edit', desc: 'Interactively edit configuration', tags: [] },
+      { cmd: 'latestx clean', desc: 'Clean the package manager cache', tags: [] },
       { cmd: 'latestx log', desc: 'View Latestx execution logs', tags: ['-l, --lines <number>'] },
+      { cmd: 'latestx upgrade', desc: 'Update latestx itself to the latest version', tags: [] },
     ],
   },
 ];

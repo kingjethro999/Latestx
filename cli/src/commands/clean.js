@@ -8,7 +8,7 @@ const cleanCommand = new Command('clean')
     .description('Clean the package manager cache')
     .action(async () => {
         try {
-            const config = loadConfig(process.cwd());
+            const config = await loadConfig(process.cwd());
 
             if (!config.ecosystems || config.ecosystems.length === 0) {
                 console.error(pc.red('No ecosystems found in latestx.yaml. Run `latestx init` first.'));
