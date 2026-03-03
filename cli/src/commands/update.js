@@ -13,66 +13,68 @@ const updateCommand = new Command('update')
     .option('--compatibility', 'Restrict updates to compatible bounds using AI')
     .action(async (pkg, options) => {
         try {
-            const config = loadConfig(process.cwd());
+            const config = await loadConfig(process.cwd());
             console.log(pc.cyan(`\n🚀 Updating dependencies for ${pc.bold(config.project.name)}`));
 
-            let allUpdates = [];
-            const eco = config.ecosystems[0]; // Focusing on primary ecosystem for this simplified flow
-            const deps = resolveDependencies(process.cwd(), eco);
+            for (const eco of config.ecosystems) {
+                console.log(pc.gray(`\n  Scanning ${eco.language} (${eco.packageManager})...`));
+                let allUpdates = [];
+                const deps = resolveDependencies(process.cwd(), eco);
 
-            if (pkg) {
-                // Single package update
-                const dep = deps.find(d => d.name === pkg);
-                if (!dep) throw new Error(`Package ${pkg} not found in manifests.`);
+                if (pkg) {
+                    // Single package update
+                    const dep = deps.find(d => d.name === pkg);
+                    if (!dep) continue; // Package not in this ecosystem, try next
 
-                const latest = await getLatestVersion(eco.language, pkg);
-                if (latest && latest !== dep.current) {
-                    allUpdates.push({ name: pkg, current: dep.current, latest });
-                } else {
-                    console.log(pc.green(`\n✨ ${pkg} is already up to date!`));
-                    process.exit(0);
-                }
-            } else {
-                // Bulk update mode
-                for (const dep of deps) {
-                    const latest = await getLatestVersion(eco.language, dep.name);
+                    const latest = await getLatestVersion(eco.language, pkg);
                     if (latest && latest !== dep.current) {
-                        allUpdates.push({ name: dep.name, current: dep.current, latest });
+                        allUpdates.push({ name: pkg, current: dep.current, latest });
+                    } else {
+                        console.log(pc.green(`\n✨ ${pkg} is already up to date!`));
+                        continue;
+                    }
+                } else {
+                    // Bulk update mode
+                    for (const dep of deps) {
+                        const latest = await getLatestVersion(eco.language, dep.name);
+                        if (latest && latest !== dep.current) {
+                            allUpdates.push({ name: dep.name, current: dep.current, latest });
+                        }
                     }
                 }
-            }
 
-            if (allUpdates.length === 0) {
-                console.log(pc.green('\n✨ All dependencies are up to date!'));
-                process.exit(0);
-            }
-
-            let finalUpdates = allUpdates;
-
-            // Run compatibility analysis if requested
-            if (options.compatibility) {
-                const aiAnalysis = await analyzeCompatibility(eco, allUpdates);
-
-                console.log(pc.cyan('\n🧠 AI Compatibility Report:'));
-                console.log(pc.gray(aiAnalysis.advisory));
-
-                if (aiAnalysis.blockedPackages && aiAnalysis.blockedPackages.length > 0) {
-                    console.log(pc.red('\nBlocked Updates:'));
-                    aiAnalysis.blockedPackages.forEach(b => {
-                        console.log(`  ✖ ${b.name}: ${pc.gray(b.reason)}`);
-                    });
+                if (allUpdates.length === 0) {
+                    console.log(pc.green(`  ✨ All ${eco.language} dependencies are up to date!`));
+                    continue;
                 }
 
-                finalUpdates = allUpdates.filter(u => aiAnalysis.safeToUpdate.includes(u.name));
-            }
+                let finalUpdates = allUpdates;
 
-            if (finalUpdates.length === 0) {
-                console.log(pc.yellow('\nNo safe updates available after compatibility checks.'));
-                process.exit(0);
-            }
+                // Run compatibility analysis if requested
+                if (options.compatibility) {
+                    const aiAnalysis = await analyzeCompatibility(eco, allUpdates);
 
-            // Execute Updates
-            await executeUpdate(eco.packageManager, finalUpdates);
+                    console.log(pc.cyan('\n🧠 AI Compatibility Report:'));
+                    console.log(pc.gray(aiAnalysis.advisory));
+
+                    if (aiAnalysis.blockedPackages && aiAnalysis.blockedPackages.length > 0) {
+                        console.log(pc.red('\nBlocked Updates:'));
+                        aiAnalysis.blockedPackages.forEach(b => {
+                            console.log(`  ✖ ${b.name}: ${pc.gray(b.reason)}`);
+                        });
+                    }
+
+                    finalUpdates = allUpdates.filter(u => aiAnalysis.safeToUpdate.includes(u.name));
+                }
+
+                if (finalUpdates.length === 0) {
+                    console.log(pc.yellow('\nNo safe updates available after compatibility checks.'));
+                    continue;
+                }
+
+                // Execute Updates
+                await executeUpdate(eco.packageManager, finalUpdates);
+            }
 
         } catch (error) {
             console.error(pc.red(`\n✖ Error: ${error.message}`));
@@ -81,3 +83,4 @@ const updateCommand = new Command('update')
     });
 
 export default updateCommand;
+

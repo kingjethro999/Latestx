@@ -1,6 +1,7 @@
 import { writeFileSync, existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 import yaml from 'yaml';
+import { analyzeWorkspace } from './analyzer.js';
 
 export async function saveConfig(cwd, analysis) {
     const configPath = join(cwd, 'latestx.yaml');
@@ -29,10 +30,12 @@ export async function saveConfig(cwd, analysis) {
     writeFileSync(configPath, yaml.stringify(config));
 }
 
-export function loadConfig(cwd) {
+export async function loadConfig(cwd) {
     const configPath = join(cwd, 'latestx.yaml');
     if (!existsSync(configPath)) {
-        throw new Error('latestx.yaml not found. Please run `latestx init` first.');
+        // Auto-initialize if it doesn't exist
+        const analysis = await analyzeWorkspace(cwd);
+        await saveConfig(cwd, analysis);
     }
 
     const content = readFileSync(configPath, 'utf8');

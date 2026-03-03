@@ -1,6 +1,6 @@
 {
   "name": "latestx",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "Universal dependency intelligence and upgrade CLI",
   "main": "src/index.js",
   "type": "module",
@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node bin/latestx.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test test/*.test.js"
   },
   "keywords": [
     "cli",
@@ -25,7 +25,6 @@
     "commander": "^14.0.3",
     "dotenv": "^17.3.1",
     "execa": "^9.6.1",
-    "is-odd": "^3.0.1",
     "ora": "^9.3.0",
     "picocolors": "^1.1.1",
     "prompts": "^2.4.2",

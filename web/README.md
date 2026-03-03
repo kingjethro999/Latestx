@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Latestx Web & Documentation Site
 
-## Getting Started
+This is the Next.js web application and documentation site for [Latestx](https://github.com/King-Jethro/Latestx), the universal dependency intelligence and upgrade CLI.
+
+## About Latestx
+
+`latestx` works across ecosystems, languages, and frameworks. It detects your project's language and package manager, analyzes dependencies, evaluates upgrade paths, and safely updates packages with a strong emphasis on compatibility and developer control.
+
+## Running the Website Locally
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
+# or npm run dev, yarn dev, bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## CLI Commands Reference
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Most commands will now auto-initialize the workspace and create a `latestx.yaml` if it is missing.
 
-## Learn More
+### Installation & Initialization
+- **`npm install -g latestx`**: Install Latestx globally.
+- **`latestx init`**: Scans your workspace to detect the primary language and package manager. Creates a `latestx.yaml` config file.
 
-To learn more about Next.js, take a look at the following resources:
+### Package Management
+- **`latestx install <package> [-c, --compatible]`**: Fetches the latest version of a package from its registry and installs it using your native package manager. Use `-c` to let the AI analyze your project's current dependencies and install the safest compatible version.
+- **`latestx uninstall <package>`**: Removes a package using your project's native package manager.
+- **`latestx check [--compatibility] [--non-interactive]`**: Checks dependencies against remote registries and displays an interactive, color-coded selection UI.
+- **`latestx update [--compatibility]`**: Updates dependencies to their latest safe versions. Add `--compatibility` to run the AI Compatibility Engine before updating.
+- **`latestx list`**: List all installed packages from your ecosystem manifest natively.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Analysis & Reports
+- **`latestx outdated [--format json|markdown]`**: Non-interactive report of outdated dependencies. Supports JSON and Markdown output for CI/CD pipelines.
+- **`latestx doctor`**: Diagnoses your environment: checks `latestx.yaml`, package manager availability, registry connectivity, and AI key status.
+- **`latestx ai [--auth]`**: Latestx ships with a built-in AI key. Use `--auth` to set your own Gemini API key for compatibility checks.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Config & Maintenance
+- **`latestx config edit`**: Interactively edit your configuration.
+- **`latestx clean`**: Clean the package manager cache natively.
+- **`latestx log [-l, --lines <number>]`**: View execution logs.
+- **`latestx upgrade`**: Update latestx itself to the latest version.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built by King Jethro.

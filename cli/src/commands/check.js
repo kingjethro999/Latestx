@@ -13,7 +13,7 @@ const checkCommand = new Command('check')
     .option('--non-interactive', 'Output results without prompts')
     .action(async (options) => {
         try {
-            const config = loadConfig(process.cwd());
+            const config = await loadConfig(process.cwd());
             console.log(pc.cyan(`\n🔍 Checking updates for ${pc.bold(config.project.name)}`));
 
             const allUpdates = [];
