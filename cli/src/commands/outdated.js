@@ -9,7 +9,7 @@ import pc from 'picocolors';
 
 const outdatedCommand = new Command('outdated')
     .description('Generate a report of outdated dependencies (non-interactive)')
-    .option('--format <type>', 'Output format: table (default), json, markdown', 'table')
+    .option('-f, --format <type>', 'Output format: table (default), json, markdown', 'table')
     .action(async (options) => {
         try {
             const config = await loadConfig(process.cwd());

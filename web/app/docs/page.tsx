@@ -138,12 +138,12 @@ export default function DocsPage() {
                         </h3>
                         <p className="text-gray-400 mb-3">
                             Checks dependencies against remote registries and displays an interactive, color-coded selection UI.
-                            Use <code className="text-accent">--non-interactive</code> for CI output.
+                            Use <code className="text-accent">-n</code> or <code className="text-accent">--non-interactive</code> for CI output.
                         </p>
                         <CodeBlock>latestx check</CodeBlock>
                         <div className="flex flex-wrap gap-2 mt-2">
-                            <span className="px-2 py-0.5 text-xs font-mono bg-primary/10 text-primary border border-primary/20 rounded-md">--compatibility</span>
-                            <span className="px-2 py-0.5 text-xs font-mono bg-primary/10 text-primary border border-primary/20 rounded-md">--non-interactive</span>
+                            <span className="px-2 py-0.5 text-xs font-mono bg-primary/10 text-primary border border-primary/20 rounded-md">-c, --compatibility</span>
+                            <span className="px-2 py-0.5 text-xs font-mono bg-primary/10 text-primary border border-primary/20 rounded-md">-n, --non-interactive</span>
                         </div>
                     </section>
 
@@ -152,10 +152,10 @@ export default function DocsPage() {
                             <span className="text-primary">#</span> latestx update
                         </h3>
                         <p className="text-gray-400 mb-3">
-                            Updates dependencies to their latest safe versions. Add <code className="text-accent">--compatibility</code> to
+                            Updates dependencies to their latest safe versions. Add <code className="text-accent">-c</code> or <code className="text-accent">--compatibility</code> to
                             run the AI Compatibility Engine before updating.
                         </p>
-                        <CodeBlock>latestx update --compatibility</CodeBlock>
+                        <CodeBlock>latestx update -c</CodeBlock>
                     </section>
 
                     <section id="uninstall">
@@ -173,9 +173,9 @@ export default function DocsPage() {
                             <span className="text-primary">#</span> latestx ai
                         </h3>
                         <p className="text-gray-400 mb-3">
-                            Latestx ships with a built-in AI key. Use <code className="text-accent">--auth</code> to set your own Gemini API key.
+                            Latestx ships with a built-in AI key. Use <code className="text-accent">-a</code> or <code className="text-accent">--auth</code> to set your own Gemini API key.
                         </p>
-                        <CodeBlock>latestx ai --auth</CodeBlock>
+                        <CodeBlock>latestx ai -a</CodeBlock>
                     </section>
 
                     <section id="doctor">
@@ -195,10 +195,10 @@ export default function DocsPage() {
                         <p className="text-gray-400 mb-3">
                             Non-interactive report of outdated dependencies. Supports JSON and Markdown output for CI/CD pipelines.
                         </p>
-                        <CodeBlock>latestx outdated --format json</CodeBlock>
+                        <CodeBlock>latestx outdated -f json</CodeBlock>
                         <div className="flex flex-wrap gap-2 mt-2">
-                            <span className="px-2 py-0.5 text-xs font-mono bg-primary/10 text-primary border border-primary/20 rounded-md">--format json</span>
-                            <span className="px-2 py-0.5 text-xs font-mono bg-primary/10 text-primary border border-primary/20 rounded-md">--format markdown</span>
+                            <span className="px-2 py-0.5 text-xs font-mono bg-primary/10 text-primary border border-primary/20 rounded-md">-f, --format json</span>
+                            <span className="px-2 py-0.5 text-xs font-mono bg-primary/10 text-primary border border-primary/20 rounded-md">-f, --format markdown</span>
                         </div>
                     </section>
 

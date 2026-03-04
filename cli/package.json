@@ -1,6 +1,6 @@
 {
   "name": "latestx",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Universal dependency intelligence and upgrade CLI",
   "main": "src/index.js",
   "type": "module",

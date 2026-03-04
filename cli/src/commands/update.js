@@ -10,7 +10,7 @@ import pc from 'picocolors';
 const updateCommand = new Command('update')
     .argument('[package]', 'Optional specific package to update')
     .description('Updates dependencies to their latest safe versions')
-    .option('--compatibility', 'Restrict updates to compatible bounds using AI')
+    .option('-c, --compatibility', 'Restrict updates to compatible bounds using AI')
     .action(async (pkg, options) => {
         try {
             const config = await loadConfig(process.cwd());

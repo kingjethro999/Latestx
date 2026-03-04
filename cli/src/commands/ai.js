@@ -5,7 +5,7 @@ import { saveApiKey } from '../core/auth.js';
 
 const aiCommand = new Command('ai')
     .description('Manage AI functionality and authentication')
-    .option('--auth', 'Configure your own custom Gemini API Key')
+    .option('-a, --auth', 'Configure your own custom Gemini API Key')
     .action(async (options) => {
         if (options.auth) {
             console.log(pc.cyan('\n🔒 latestx Custom Authentication Setup'));
