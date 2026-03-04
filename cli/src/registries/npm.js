@@ -3,10 +3,10 @@
  */
 export async function getNpmLatestVersion(packageName) {
     try {
-        const res = await fetch(`https://registry.npmjs.org/${packageName}/latest`);
+        const res = await fetch(`https://registry.npmjs.org/${packageName}`);
         if (!res.ok) return null;
         const data = await res.json();
-        return data.version;
+        return data['dist-tags']?.latest || null;
     } catch (err) {
         return null;
     }
