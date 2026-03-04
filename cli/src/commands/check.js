@@ -9,8 +9,8 @@ import { calculateDelta, getDeltaColor } from '../utils/semver.js';
 
 const checkCommand = new Command('check')
     .description('Checks for latest version of packages')
-    .option('--compatibility', 'Runs AI compatibility analysis')
-    .option('--non-interactive', 'Output results without prompts')
+    .option('-c, --compatibility', 'Runs AI compatibility analysis')
+    .option('-n, --non-interactive', 'Output results without prompts')
     .action(async (options) => {
         try {
             const config = await loadConfig(process.cwd());

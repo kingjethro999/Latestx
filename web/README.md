@@ -28,14 +28,14 @@ Most commands will now auto-initialize the workspace and create a `latestx.yaml`
 ### Package Management
 - **`latestx install <package> [-c, --compatible]`**: Fetches the latest version of a package from its registry and installs it using your native package manager. Use `-c` to let the AI analyze your project's current dependencies and install the safest compatible version.
 - **`latestx uninstall <package>`**: Removes a package using your project's native package manager.
-- **`latestx check [--compatibility] [--non-interactive]`**: Checks dependencies against remote registries and displays an interactive, color-coded selection UI.
-- **`latestx update [--compatibility]`**: Updates dependencies to their latest safe versions. Add `--compatibility` to run the AI Compatibility Engine before updating.
+- **`latestx check [-c, --compatibility] [-n, --non-interactive]`**: Checks dependencies against remote registries and displays an interactive, color-coded selection UI.
+- **`latestx update [-c, --compatibility]`**: Updates dependencies to their latest safe versions. Add `-c` or `--compatibility` to run the AI Compatibility Engine before updating.
 - **`latestx list`**: List all installed packages from your ecosystem manifest natively.
 
 ### Analysis & Reports
-- **`latestx outdated [--format json|markdown]`**: Non-interactive report of outdated dependencies. Supports JSON and Markdown output for CI/CD pipelines.
+- **`latestx outdated [-f, --format json|markdown]`**: Non-interactive report of outdated dependencies. Supports JSON and Markdown output for CI/CD pipelines.
 - **`latestx doctor`**: Diagnoses your environment: checks `latestx.yaml`, package manager availability, registry connectivity, and AI key status.
-- **`latestx ai [--auth]`**: Latestx ships with a built-in AI key. Use `--auth` to set your own Gemini API key for compatibility checks.
+- **`latestx ai [-a, --auth]`**: Latestx ships with a built-in AI key. Use `-a` or `--auth` to set your own Gemini API key for compatibility checks.
 
 ### Config & Maintenance
 - **`latestx config edit`**: Interactively edit your configuration.

@@ -3,6 +3,15 @@ import Link from 'next/link';
 
 const releases = [
     {
+        version: 'v1.0.6',
+        date: 'March 2026',
+        title: 'Global Short Form Commands',
+        description: 'Quality of life improvements for developers with the addition of global short-form aliases to all commands.',
+        changes: [
+            { type: 'improvement', desc: 'Added short aliases like `-c` for `--compatibility`, `-n` for `--non-interactive`, `-f` for `--format`, and `-a` for `--auth`.' }
+        ]
+    },
+    {
         version: 'v1.0.5',
         date: 'March 2026',
         title: 'Advanced Commands & AI Enhancements',

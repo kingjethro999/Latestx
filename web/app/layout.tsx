@@ -14,7 +14,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Latestx",
-  description: "Latestx - The Universal Package Manager",
+  description: "Latestx - The Universal Dependency Intelligence and Upgrade CLI",
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default function RootLayout({

@@ -16,17 +16,17 @@ const commands = [
     items: [
       { cmd: 'latestx install <package>', desc: 'Install a new package to your project', tags: ['-c, --compatible'] },
       { cmd: 'latestx uninstall <package>', desc: 'Remove a package via native package manager', tags: [] },
-      { cmd: 'latestx check', desc: 'Check for outdated dependencies', tags: ['--compatibility', '--non-interactive'] },
-      { cmd: 'latestx update', desc: 'Update packages safely using intelligence', tags: ['--compatibility'] },
+      { cmd: 'latestx check', desc: 'Check for outdated dependencies', tags: ['-c, --compatibility', '-n, --non-interactive'] },
+      { cmd: 'latestx update', desc: 'Update packages safely using intelligence', tags: ['-c, --compatibility'] },
       { cmd: 'latestx list', desc: 'List all installed packages natively', tags: [] },
     ],
   },
   {
     category: 'Analysis & Reports',
     items: [
-      { cmd: 'latestx outdated', desc: 'Generate a dependency report for CI/CD', tags: ['--format json', '--format markdown'] },
+      { cmd: 'latestx outdated', desc: 'Generate a dependency report for CI/CD', tags: ['-f, --format json', '-f, --format markdown'] },
       { cmd: 'latestx doctor', desc: 'Diagnose your latestx setup and environment', tags: [] },
-      { cmd: 'latestx ai', desc: 'AI-assisted dependency analysis', tags: ['--auth'] },
+      { cmd: 'latestx ai', desc: 'AI-assisted dependency analysis', tags: ['-a, --auth'] },
     ],
   },
   {
