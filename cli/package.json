@@ -1,6 +1,6 @@
 {
   "name": "latestx",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Universal dependency intelligence and upgrade CLI",
   "main": "src/index.js",
   "type": "module",
@@ -8,7 +8,7 @@
     "latestx": "./bin/latestx.js"
   },
   "scripts": {
-    "start": "node bin/latestx.js",
+    "start": "node init && node bin/latestx.js",
     "test": "node --test test/*.test.js"
   },
   "keywords": [

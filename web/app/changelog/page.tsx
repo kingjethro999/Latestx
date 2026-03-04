@@ -3,6 +3,18 @@ import Link from 'next/link';
 
 const releases = [
     {
+        version: 'v1.0.7',
+        date: 'March 2026',
+        title: 'Massive Ecosystem Expansion & Bug Fixes',
+        description: 'A colossal improvement to the internal analyzer, natively mapping and resolving over 60+ frameworks across 7 languages, alongside a critical registry update fix.',
+        changes: [
+            { type: 'feature', desc: 'Added advanced detection for 40+ JavaScript logic tools—from frontend stalwarts (React, Vue, Svelte, Angular) to metaparents (Next, Nuxt, Astro) and backend APIs (Nest, Fastify, Elysia, Hono).' },
+            { type: 'feature', desc: 'Vastly expanded Python diagnostics for web (Django, Flask, FastAPI) and ML environments (Streamlit, Gradio).' },
+            { type: 'feature', desc: 'Added hyper-specific scanning for Ruby (Rails, Sinatra), PHP (Laravel, Symfony, WordPress), Go (Gin, Fiber, Echo), Rust (Actix, Axum, Tauri), and Dart/Flutter ecosystems.' },
+            { type: 'bugfix', desc: 'Resolved a 404 registry error in `latestx upgrade` by targeting the root package endpoint and parsing `dist-tags.latest`.' }
+        ]
+    },
+    {
         version: 'v1.0.6',
         date: 'March 2026',
         title: 'Global Short Form Commands',
