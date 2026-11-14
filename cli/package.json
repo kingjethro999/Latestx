@@ -8,7 +8,7 @@
     "latestx": "./bin/latestx.js"
   },
   "scripts": {
-    "start": "node init && node bin/latestx.js",
+    "start": "node bin/latestx.js",
     "test": "node --test test/*.test.js"
   },
   "keywords": [
